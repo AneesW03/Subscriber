@@ -30,7 +30,7 @@ class MQTTSubscriber(context: Context, updater: LocationUpdateListener) {
                 println("Connected to MQTT broker!")
 
                 mqttClient.subscribeWith()
-                    .topicFilter("assignment/location/anees")
+                    .topicFilter("assignment/location")
                     .callback { publish: Mqtt5Publish ->
                         val message = String(publish.payloadAsBytes, StandardCharsets.UTF_8)
                         val json = JSONObject(message)
