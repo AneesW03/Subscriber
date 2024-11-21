@@ -1,5 +1,6 @@
 package com.example.subscriber
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
@@ -131,12 +132,18 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationUpdateList
 
     private fun onViewMoreClicked(publisherData: PublisherModel) {
         // Handle "View More" click
-        println("Hey")
         Toast.makeText(this, "View More clicked for ${publisherData.studentID}", Toast.LENGTH_SHORT).show()
-        // Navigate to a detailed view or perform another action
+        navigateToNextPage()
     }
 
     private fun updatePublisherList(publisherList: MutableList<PublisherModel>) {
         publisherAdapter.updatePublisherList(publisherList)
+    }
+
+    private fun navigateToNextPage(){
+        println("DO")
+        val i = Intent(this,SummaryActivity::class.java)
+        i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
+        startActivity(i)
     }
 }
